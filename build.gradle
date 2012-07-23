@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+
+repositories {
+	mavenCentral()
+	mavenRepo name: 'ebi-repo',
+        url: 'https://www.ebi.ac.uk/~maven/m2repo'
+}
+
+dependencies {
+	compile group: 'org.openscience.cdk', name: 'cdk-render', version: "1.4.11"
+	compile group: 'org.openscience.cdk', name: 'cdk-renderbasic', version: "1.4.11"
+	compile group: 'org.openscience.cdk', name: 'cdk-io', version: "1.4.11"
+}
+
+run {
+	if(project.hasProperty("mol")){
+        args mol
+    }
+}
+
+mainClassName = "uk.ac.ebi.RendererExample"
+
